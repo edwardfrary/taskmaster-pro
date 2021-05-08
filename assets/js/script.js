@@ -49,8 +49,8 @@ var saveTasks = function () {
 $(".list-group").on("click", "p", function () {
   //get the CURRENT content of <p>
   var text = $(this)
-  .text()
-  .trim();
+    .text()
+    .trim();
 
   //creates a text area
   var textInput = $("<textarea>")
@@ -70,25 +70,25 @@ $(".list-group").on("click", "p", function () {
 
     //get the parent ul's id attribute
     var status = $(this)
-    .closest(".list-group")
-    .attr("id")
-    .replace("list-", "");
+      .closest(".list-group")
+      .attr("id")
+      .replace("list-", "");
 
     //get the tasks position in the list
     var index = $(this)
-    .closest(".list-group")
-    .index();
+      .closest(".list-group")
+      .index();
 
- console.log(text);
-// recreate p element
-var taskP = $("<p>")
-  .addClass("m-1")
-  .text(text);
+    console.log(text);
+    // recreate p element
+    var taskP = $("<p>")
+      .addClass("m-1")
+      .text(text);
 
-// replace textarea with p element
-$(this).replaceWith(taskP);
+    // replace textarea with p element
+    $(this).replaceWith(taskP);
   })
- 
+
 });
 
 
@@ -133,6 +133,26 @@ $("#remove-tasks").on("click", function () {
     $("#list-" + key).empty();
   }
   saveTasks();
+});
+
+//due date was clicked
+$(".list-group").on("click", "span", function(){
+  // get curent text
+  var date = $(this)
+  .text()
+  .trim();
+
+  // create new input element
+  var dateInput = $("<input>")
+  .attr("type", "text")
+  .addClass("form-control")
+  .val(date);
+
+  //swap out elements
+  $(this).replaceWith(dataInput);
+
+  //automatically focus on new element
+  dateInput.trigger("focus");
 });
 
 // load tasks for the first time
