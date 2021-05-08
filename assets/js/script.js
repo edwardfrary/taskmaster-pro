@@ -149,7 +149,7 @@ $(".list-group").on("click", "span", function(){
   .val(date);
 
   //swap out elements
-  $(this).replaceWith(dataInput);
+  $(this).replaceWith(dateInput);
 
   //automatically focus on new element
   dateInput.trigger("focus");
