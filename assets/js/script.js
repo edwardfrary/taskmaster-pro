@@ -187,6 +187,29 @@ $(".list-group").on("blur", "input[type='text']", function(){
   $(this).replaceWith(taskSpan);
 });
 
+//-----jQuery UI stuff starts here-------
+$(".card .list-group").sortable({
+  connectWith: $(".card .list-group"),
+  scroll: false,
+  tolerance: "pointer",
+  helper: "clone",
+  activate: function(event) {
+    console.log("activate", this);
+  },
+  deactivate: function(event){
+    console.log("deactive", this);
+  },
+  over: function(event){
+    console.log("over", event.target);
+  },
+  out: function(event){
+    console.log("out", event.target);
+  },
+  update: function(event){
+    console.log($(this).children());
+  }
+});
+
 // load tasks for the first time
 loadTasks();
 
