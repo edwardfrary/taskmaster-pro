@@ -160,8 +160,7 @@ $(".list-group").on("click", "span", function(){
 $(".list-group").on("blur", "input[type='text']", function(){
   //get current text
   var date = $(this)
-  .val()
-  .trim();
+  .val();
 
   //get the parent ul's id attribute
   var status = $(this)
