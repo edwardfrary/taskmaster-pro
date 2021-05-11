@@ -151,7 +151,12 @@ $(".list-group").on("click", "span", function () {
   //swap out elements
   $(this).replaceWith(dateInput);
 
-  dateInput.datepicker({minDate: 0});
+  dateInput.datepicker({
+    minDate: 0,
+    onClose: function(){
+      $(this).trigger("change");
+    }
+  });
 
   //automatically focus on new element
   dateInput.trigger("focus");
