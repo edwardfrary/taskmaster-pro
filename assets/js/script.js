@@ -249,6 +249,9 @@ out: function(event, ui) {
 }
 });
 
+//date stuff starts here
+$("#modalDueDate").datepicker();
+
 // load tasks for the first time
 loadTasks();
 
