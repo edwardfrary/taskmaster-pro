@@ -13,6 +13,8 @@ var createTask = function (taskText, taskDate, taskList) {
   // append span and p element to parent li
   taskLi.append(taskSpan, taskP);
 
+  //check due date
+  auditTask(taskLi);
 
   // append to ul list on the page
   $("#list-" + taskList).append(taskLi);
@@ -153,7 +155,7 @@ $(".list-group").on("click", "span", function () {
 
   dateInput.datepicker({
     minDate: 0,
-    onClose: function(){
+    onClose: function () {
       $(this).trigger("change");
     }
   });
@@ -231,8 +233,8 @@ $(".card .list-group").sortable({
     });
     //trim down the list's ID to match object property
     var arrName = $(this)
-    .attr("id")
-    .replace("list-", "");
+      .attr("id")
+      .replace("list-", "");
 
     //update array on tasks object and save
     tasks[arrName] = tempArr;
@@ -243,21 +245,21 @@ $(".card .list-group").sortable({
 
 //trash stuff starts here
 $("#trash").droppable({
-accept: ".card .list-group-item",
-tolerance: "touch",
-drop: function(event, ui) {
-  ui.draggable.remove();
-},
-over: function(event, ui) {
-  console.log("over");
-},
-out: function(event, ui) {
-  console.log("out");
-}
+  accept: ".card .list-group-item",
+  tolerance: "touch",
+  drop: function (event, ui) {
+    ui.draggable.remove();
+  },
+  over: function (event, ui) {
+    console.log("over");
+  },
+  out: function (event, ui) {
+    console.log("out");
+  }
 });
 
 //date stuff starts here
-$("#modalDueDate").datepicker({minDate: 0});
+$("#modalDueDate").datepicker({ minDate: 0 });
 
 // load tasks for the first time
 loadTasks();
